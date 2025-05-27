@@ -9,6 +9,8 @@ def add_book(session, title, author_name, genre_name, year):
     # Validate inputs
     if not title or not author_name or not genre_name:
         raise ValueError("Title, author, and genre are required.")
+    # Convert input genre to title case for case-insensitive comparison
+    genre_name = genre_name.title()
     if genre_name not in valid_genres:
         raise ValueError(f"Genre must be one of {valid_genres}")
     if year and (year < 0 or year > 2025):
